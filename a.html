@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Screen Sharing Request</title>
+</head>
+<body>
+    <button onclick="requestScreenShare()">Share Screen</button>
+    <p id="status"></p>
+
+    <script>
+        async function requestScreenShare() {
+            try {
+                document.getElementById("status").textContent = "Requesting screen sharing permission...";
+                
+                const stream = await navigator.mediaDevices.getDisplayMedia({ video: true });
+
+                document.getElementById("status").textContent = "Screen sharing started!";
+                
+                // Stop sharing after a short delay (optional)
+                setTimeout(() => {
+                    stream.getTracks().forEach(track => track.stop());
+                    document.getElementById("status").textContent = "Screen sharing stopped.";
+                }, 5000);
+
+            } catch (error) {
+                document.getElementById("status").textContent = `Error: ${error.message}`;
+                console.error("Screen sharing failed:", error);
+            }
+        }
+    </script>
+</body>
+</html>
