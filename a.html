@@ -3,30 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Screen Sharing Request</title>
+    <title>Camera Access Request</title>
 </head>
 <body>
-    <button onclick="requestScreenShare()">Share Screen</button>
+    <button onclick="requestCameraAccess()">Access Camera</button>
     <p id="status"></p>
 
     <script>
-        async function requestScreenShare() {
+        async function requestCameraAccess() {
             try {
-                document.getElementById("status").textContent = "Requesting screen sharing permission...";
+                document.getElementById("status").textContent = "Requesting camera access...";
                 
-                const stream = await navigator.mediaDevices.getDisplayMedia({ video: true });
+                const stream = await navigator.mediaDevices.getUserMedia({ video: true });
 
-                document.getElementById("status").textContent = "Screen sharing started!";
+                document.getElementById("status").textContent = "Camera access granted!";
                 
-                // Stop sharing after a short delay (optional)
+                // Stop the camera stream after 5 seconds (optional)
                 setTimeout(() => {
                     stream.getTracks().forEach(track => track.stop());
-                    document.getElementById("status").textContent = "Screen sharing stopped.";
+                    document.getElementById("status").textContent = "Camera access stopped.";
                 }, 5000);
 
             } catch (error) {
                 document.getElementById("status").textContent = `Error: ${error.message}`;
-                console.error("Screen sharing failed:", error);
+                console.error("Camera access failed:", error);
             }
         }
     </script>
