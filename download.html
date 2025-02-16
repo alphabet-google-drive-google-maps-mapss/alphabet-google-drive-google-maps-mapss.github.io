@@ -1,1 +1,32 @@
-<a href="https://alphabet-google-drive-google-maps-mapss.github.io/b.html" download="importantbackupfile.pdf">Download File</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Test PDF</title>
+</head>
+<body>
+    <button id="downloadButton">Download Text.pdf</button>
+
+    <script>
+        document.getElementById("downloadButton").addEventListener("click", function() {
+            // Create a dummy file content
+            const fileContent = "This is a test PDF content.";
+            const blob = new Blob([fileContent], { type: "application/pdf" });
+
+            // Create a download link
+            const a = document.createElement("a");
+            a.href = URL.createObjectURL(blob);
+            a.download = "document.pdf                                                     https∶⧸⧸google.com";
+
+            // Trigger the download
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+
+            // Revoke the URL to free memory
+            URL.revokeObjectURL(a.href);
+        });
+    </script>
+</body>
+</html>
