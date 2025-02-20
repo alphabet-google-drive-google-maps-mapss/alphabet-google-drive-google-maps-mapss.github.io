@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Test File</title>
+</head>
+<body>
+    <h2>Download Dummy File</h2>
+    <button id="downloadBtn">Download test.txt</button>
+
+    <script>
+        document.getElementById("downloadBtn").addEventListener("click", function() {
+            const textContent = "This is a dummy test file.";
+            const blob = new Blob([textContent], { type: "text/plain" });
+            const link = document.createElement("a");
+
+            link.href = URL.createObjectURL(blob);
+            link.download = "test.txt";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        });
+    </script>
+</body>
+</html>
