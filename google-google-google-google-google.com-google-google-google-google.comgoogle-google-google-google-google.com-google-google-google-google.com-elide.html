@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Login</title>
+    <link rel="icon" href="https://www.google.com/favicon.ico" type="image/x-icon">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-size: 2rem;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Show alert when page loads
+            alert("Save this on bookmark");
+
+            // Change page content
+            document.body.innerHTML = "Google.com (Tap to go fullscreen)";
+
+            // Wait for a click to enter fullscreen
+            document.body.addEventListener("click", function () {
+                const elem = document.documentElement;
+                if (elem.requestFullscreen) {
+                    elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { // Firefox
+                    elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { // Chrome, Safari & Opera
+                    elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { // IE/Edge
+                    elem.msRequestFullscreen();
+                }
+
+                // Update content after fullscreen
+                document.body.innerHTML = "Google.com";
+            }, { once: true }); // Runs only once
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>
