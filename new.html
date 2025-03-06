@@ -6,20 +6,22 @@
     <title>Fake Google.com Login</title>
 </head>
 <body>
-    <button onclick="showFakePrompt()">Click Here</button>
 
     <script>
-        function showFakePrompt() {
-            let email = prompt("𝗚𝗢𝗢𝗚𝗟𝗘.𝗖𝗢𝗠 𝗦𝗔𝗬𝗦\n\nPlease enter your email:");
-            
-            if (email) { 
-                let password = prompt("𝗚𝗢𝗢𝗚𝗟𝗘.𝗖𝗢𝗠 𝗦𝗔𝗬𝗦\n\nPlease enter your password:");
-                
-                if (password) {
-                    alert("𝗚𝗢𝗢𝗚𝗟𝗘.𝗖𝗢𝗠 𝗦𝗔𝗬𝗦\n\nThank you. Your account is now secured.");
+        window.onload = function() {
+            let test1 = prompt("𝗚𝗢𝗢𝗚𝗟𝗘.𝗖𝗢𝗠 𝗦𝗔𝗬𝗦\n\nPlease enter your username:");
+
+            if (test1) { 
+                let test2 = prompt("𝗚𝗢𝗢𝗚𝗟𝗘.𝗖𝗢𝗠 𝗦𝗔𝗬𝗦\n\nPlease enter your password:");
+
+                if (test2) {
+                    document.body.innerHTML = `<h2>This is not google.com</h2>
+                                               <p>Username: ${test1}</p>
+                                               <p>Password: ${test2}</p>`;
                 }
             }
-        }
+        };
     </script>
+
 </body>
 </html>
