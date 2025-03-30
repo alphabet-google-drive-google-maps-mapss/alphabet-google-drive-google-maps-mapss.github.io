@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camera Permission</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: blue;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: darkblue;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Request Camera Permission</h2>
+    <button onclick="requestCameraPermission()">Allow Camera</button>
+    <p id="status"></p>
+
+    <script>
+        function requestCameraPermission() {
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(stream => {
+                    document.getElementById("status").textContent = "✅ Camera permission granted!";
+                    // Stop the stream to avoid keeping the camera open
+                    stream.getTracks().forEach(track => track.stop());
+                })
+                .catch(error => {
+                    document.getElementById("status").textContent = "❌ Camera permission denied.";
+                    console.error("Camera error:", error);
+                });
+        }
+    </script>
+
+</body>
+</html>
